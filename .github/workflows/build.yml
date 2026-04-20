@@ -1,0 +1,33 @@
+name: Build and Type Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: https://service.staging.dispattch.dev/api/v1
+          NEXT_PUBLIC_GRAFANA_URL: https://grafana.staging.dispattch.dev
+          NEXT_PUBLIC_KEYCLOAK_URL: https://auth.staging.dispattch.dev
+          NEXT_PUBLIC_KEYCLOAK_REALM: dispattch
+          NEXT_PUBLIC_KEYCLOAK_CLIENT_ID: admin-dashboard
+          NEXT_KEYCLOAK_CLIENT_SECRET: ${{ secrets.NEXT_KEYCLOAK_CLIENT_SECRET }}
