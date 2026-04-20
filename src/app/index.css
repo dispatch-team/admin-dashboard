@@ -3,172 +3,135 @@
 @tailwind utilities;
 
 /*
- * Dispatch Design System
- *
- * HOW TO THEME:
- *  - Dark/Light mode: controlled by the `dark` class on <html> (next-themes).
- *  - Color scheme: controlled by scheme-* classes on <html> (ThemeProvider.tsx).
- *  - To add a new scheme, copy one of the .scheme-* blocks and change the hue.
- *  - The single source of truth for scheme config is src/lib/theme.ts.
+ * Dispatch Design System - Clean Black & White
  */
 
 @layer base {
   /* ─── Light Mode (default / :root) ───────────────────────────────────────── */
   :root {
-    --hue: 270;
-    --sat: 70%;
+    --hue: 0;
+    --sat: 0%;
 
-    --background: var(--hue) 15% 97%;
-    --foreground: var(--hue) 15% 10%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
 
-    --card: var(--hue) 15% 100%;
-    --card-foreground: var(--hue) 15% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
 
-    --popover: var(--hue) 15% 100%;
-    --popover-foreground: var(--hue) 15% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: var(--hue) var(--sat) 52%;
+    --primary: 0 0% 10%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: var(--hue) 20% 92%;
-    --secondary-foreground: var(--hue) 15% 10%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: var(--hue) 15% 93%;
-    --muted-foreground: var(--hue) 10% 45%;
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: calc(var(--hue) + 20) 80% 50%;
+    --accent: 0 0% 15%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 142 71% 35%;
+    --success: 142 0% 35%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 45 93% 40%;
+    --warning: 45 0% 40%;
     --warning-foreground: 0 0% 100%;
 
-    --info: 199 89% 40%;
+    --info: 199 0% 40%;
     --info-foreground: 0 0% 100%;
 
-    --border: var(--hue) 15% 88%;
-    --input: var(--hue) 15% 88%;
-    --ring: var(--hue) var(--sat) 52%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 10%;
 
     --radius: 0.625rem;
 
-    --sidebar-background: var(--hue) 20% 96%;
-    --sidebar-foreground: var(--hue) 15% 10%;
-    --sidebar-primary: var(--hue) var(--sat) 52%;
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: var(--hue) 15% 90%;
-    --sidebar-accent-foreground: var(--hue) 15% 10%;
-    --sidebar-border: var(--hue) 15% 85%;
-    --sidebar-ring: var(--hue) var(--sat) 52%;
+    --sidebar-accent: 0 0% 90%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 0 0% 10%;
 
-    --status-pending: 45 93% 40%;
-    --status-assigned: 199 89% 40%;
-    --status-in-transit: var(--hue) var(--sat) 52%;
-    --status-delivered: 142 71% 35%;
+    --status-pending: 0 0% 40%;
+    --status-assigned: 0 0% 30%;
+    --status-in-transit: 0 0% 20%;
+    --status-delivered: 0 0% 10%;
     --status-failed: 0 72% 51%;
-    --status-cancelled: var(--hue) 10% 50%;
+    --status-cancelled: 0 0% 50%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(var(--hue) var(--sat) 52%) 0%, hsl(calc(var(--hue) + 20) 80% 50%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(calc(var(--hue) + 20) 80% 50%) 0%, hsl(calc(var(--hue) + 50) 80% 45%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(var(--hue) 15% 100%) 0%, hsl(var(--hue) 15% 97%) 100%);
-
-    --shadow-sm: 0 1px 2px 0 hsl(var(--hue) 20% 10% / 0.06);
-    --shadow-md: 0 4px 6px -1px hsl(var(--hue) 20% 10% / 0.08), 0 2px 4px -2px hsl(var(--hue) 20% 10% / 0.06);
-    --shadow-lg: 0 10px 15px -3px hsl(var(--hue) 20% 10% / 0.08), 0 4px 6px -4px hsl(var(--hue) 20% 10% / 0.06);
-    --shadow-glow: 0 0 20px hsl(var(--hue) var(--sat) 52% / 0.2);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-glow: 0 0 20px rgb(0 0 0 / 0.1);
   }
 
-  /* ─── Dark Mode ──────────────────────────────────────────────────────────── */
+  /* ─── Dark Mode (Pure Grayscale) ──────────────────────────────────────────── */
   .dark {
-    --background: var(--hue) 30% 8%;
-    --foreground: var(--hue) 10% 95%;
+    --background: 0 0% 2%;
+    --foreground: 0 0% 95%;
 
-    --card: var(--hue) 30% 12%;
-    --card-foreground: var(--hue) 10% 95%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: var(--hue) 30% 12%;
-    --popover-foreground: var(--hue) 10% 95%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: var(--hue) var(--sat) 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: var(--hue) 30% 18%;
-    --secondary-foreground: var(--hue) 10% 95%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: var(--hue) 20% 16%;
-    --muted-foreground: var(--hue) 10% 60%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: calc(var(--hue) + 20) 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 142 71% 45%;
+    --success: 142 0% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 45 93% 47%;
-    --warning-foreground: var(--hue) 30% 8%;
+    --warning: 45 0% 47%;
+    --warning-foreground: 0 0% 2%;
 
-    --info: 199 89% 48%;
+    --info: 199 0% 48%;
     --info-foreground: 0 0% 100%;
 
-    --border: var(--hue) 20% 20%;
-    --input: var(--hue) 20% 20%;
-    --ring: var(--hue) var(--sat) 60%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 98%;
 
-    --sidebar-background: var(--hue) 35% 6%;
-    --sidebar-foreground: var(--hue) 10% 95%;
-    --sidebar-primary: var(--hue) var(--sat) 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: var(--hue) 30% 15%;
-    --sidebar-accent-foreground: var(--hue) 10% 95%;
-    --sidebar-border: var(--hue) 20% 18%;
-    --sidebar-ring: var(--hue) var(--sat) 60%;
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 10%;
+    --sidebar-ring: 0 0% 98%;
 
-    --status-pending: 45 93% 47%;
-    --status-assigned: 199 89% 48%;
-    --status-in-transit: var(--hue) var(--sat) 60%;
-    --status-delivered: 142 71% 45%;
+    --status-pending: 0 0% 47%;
+    --status-assigned: 0 0% 55%;
+    --status-in-transit: 0 0% 70%;
+    --status-delivered: 0 0% 90%;
     --status-failed: 0 72% 51%;
-    --status-cancelled: var(--hue) 10% 50%;
+    --status-cancelled: 0 0% 50%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(var(--hue) var(--sat) 60%) 0%, hsl(calc(var(--hue) + 20) 80% 55%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(calc(var(--hue) + 20) 80% 55%) 0%, hsl(calc(var(--hue) + 50) 80% 50%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(var(--hue) 30% 14%) 0%, hsl(var(--hue) 30% 10%) 100%);
-
-    --shadow-sm: 0 1px 2px 0 hsl(var(--hue) 50% 5% / 0.3);
-    --shadow-md: 0 4px 6px -1px hsl(var(--hue) 50% 5% / 0.4), 0 2px 4px -2px hsl(var(--hue) 50% 5% / 0.3);
-    --shadow-lg: 0 10px 15px -3px hsl(var(--hue) 50% 5% / 0.4), 0 4px 6px -4px hsl(var(--hue) 50% 5% / 0.3);
-    --shadow-glow: 0 0 20px hsl(var(--hue) var(--sat) 60% / 0.4);
-  }
-
-  /* ─── Color Schemes (hue overrides) ─────────────────────────────────────── */
-  /* Purple is the default (hue: 270). No class needed. */
-
-  .scheme-blue {
-    --hue: 217;
-    --sat: 91%;
-  }
-
-  .scheme-orange {
-    --hue: 25;
-    --sat: 95%;
-  }
-
-  .scheme-green {
-    --hue: 142;
-    --sat: 71%;
-  }
-
-  .scheme-rose {
-    --hue: 346;
-    --sat: 84%;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.6), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.6), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+    --shadow-glow: 0 0 20px rgb(255 255 255 / 0.05);
   }
 }
 
@@ -240,10 +203,6 @@
     animation: scaleIn 0.3s ease-out forwards;
   }
 
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-
   @keyframes slideUp {
     from {
       opacity: 0;
@@ -269,19 +228,5 @@
       opacity: 1;
       transform: scale(1);
     }
-  }
-
-  @keyframes pulseGlow {
-    0%, 100% {
-      box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
-    }
-    50% {
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
-    }
-  }
-
-  @keyframes gradient-shift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
   }
 }
