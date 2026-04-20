@@ -332,8 +332,8 @@ const en = {
     lastNamePlaceholder: "Last Name",
     ownerPassword: "Owner Password",
     confirmPassword: "Confirm Password",
-    maxWeight: "Maximum Weight (kg)",
-    basePrice: "Base Price (ETB)",
+    maximumWeight: "Maximum Weight (kg)",
+    pricingBasePrice: "Base Price (ETB)",
     weightRate: "Weight Rate (ETB/kg)",
     distanceRate: "Distance Rate (ETB/km)",
     timeRate: "Time Rate (ETB/min)",
@@ -404,6 +404,7 @@ const en = {
     error: "Error",
     search: "Search",
     searchPlaceholder: "Search...",
+    selectStatus: "Select Status",
     noData: "No data available",
   },
 

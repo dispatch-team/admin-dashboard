@@ -46,8 +46,11 @@ function resolveCode(request: NextRequest, params?: { code?: string }) {
   return codeSegment;
 }
 
-export async function GET(request: NextRequest, { params }: { params?: { code?: string } }) {
-  const code = resolveCode(request, params);
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ code: string }> }
+) {
+  const { code } = await params;
   if (!code) {
     return NextResponse.json({ error: "missing_code" }, { status: 400 });
   }
@@ -55,8 +58,11 @@ export async function GET(request: NextRequest, { params }: { params?: { code?: 
   return proxyShipmentRequest(request, code, "GET");
 }
 
-export async function PATCH(request: NextRequest, { params }: { params?: { code?: string } }) {
-  const code = resolveCode(request, params);
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ code: string }> }
+) {
+  const { code } = await params;
   if (!code) {
     return NextResponse.json({ error: "missing_code" }, { status: 400 });
   }
@@ -64,8 +70,11 @@ export async function PATCH(request: NextRequest, { params }: { params?: { code?
   return proxyShipmentRequest(request, code, "PATCH");
 }
 
-export async function DELETE(request: NextRequest, { params }: { params?: { code?: string } }) {
-  const code = resolveCode(request, params);
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ code: string }> }
+) {
+  const { code } = await params;
   if (!code) {
     return NextResponse.json({ error: "missing_code" }, { status: 400 });
   }

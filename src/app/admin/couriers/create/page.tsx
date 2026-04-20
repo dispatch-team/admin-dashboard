@@ -276,7 +276,7 @@ export default function CreateCourierPage() {
                 <CardContent className="p-8 pt-4 space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("maxWeight")}</Label>
+                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("maximumWeight")}</Label>
                       <Input 
                         {...register("max_weight")}
                         type="number"
@@ -286,7 +286,7 @@ export default function CreateCourierPage() {
                       {errors.max_weight && <p className="text-[10px] text-destructive font-bold ml-1">{errors.max_weight.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("basePrice")}</Label>
+                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("pricingBasePrice")}</Label>
                       <Input 
                         {...register("base_price")}
                         type="number"
@@ -392,8 +392,8 @@ export default function CreateCourierPage() {
                 </CardHeader>
                 <CardContent className="p-8 pt-4 space-y-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <ReviewItem label={t("maxWeight")} value={`${formData?.max_weight} ${tCommon("kg")}`} />
-                    <ReviewItem label={t("basePrice")} value={`${formData?.base_price} ${tCommon("etb")}`} />
+                    <ReviewItem label={t("maximumWeight")} value={`${formData?.max_weight} ${tCommon("kg")}`} />
+                    <ReviewItem label={t("pricingBasePrice")} value={`${formData?.base_price} ${tCommon("etb")}`} />
                   </div>
                   <Separator className="bg-border/20" />
                   <ReviewItem label={t("weightRate")} value={`${formData?.weight_rate} ${tCommon("etbPerKg")}`} />

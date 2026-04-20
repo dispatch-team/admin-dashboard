@@ -112,7 +112,7 @@ export function useI18n<NS extends Namespace>(namespace: NS) {
   const ns = messages[namespace] as NSMessages<NS>;
 
   const t = useCallback(
-    (key: string, replacements?: Record<string, string>): string => {
+    (key: string, replacements?: Record<string, string | number>): string => {
       const parts = key.split(".");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let value: any = ns;
@@ -122,7 +122,7 @@ export function useI18n<NS extends Namespace>(namespace: NS) {
       let result = typeof value === "string" ? value : key;
       if (replacements) {
         for (const [k, v] of Object.entries(replacements)) {
-          result = result.replace(`{${k}}`, v);
+          result = result.replace(`{${k}}`, v.toString());
         }
       }
       return result;

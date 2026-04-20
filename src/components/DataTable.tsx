@@ -25,7 +25,7 @@ interface DataTableProps<T> {
   emptyMessage?: string;
 }
 
-export function DataTable<T extends Record<string, unknown>>({
+export function DataTable<T>({
   columns,
   data,
   keyExtractor,
@@ -65,7 +65,7 @@ export function DataTable<T extends Record<string, unknown>>({
                   <TableCell key={column.key} className={cn("text-xs py-2 px-3", column.className)}>
                     {column.render
                       ? column.render(item)
-                      : String(item[column.key] ?? "")}
+                      : String((item as any)[column.key] ?? "")}
                   </TableCell>
                 ))}
               </TableRow>
