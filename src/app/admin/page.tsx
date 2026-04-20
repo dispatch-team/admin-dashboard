@@ -1,68 +1,142 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { Shield, LogOut } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useEffect, useState } from "react";
+import { Users, Truck, List, PackageCheck } from "lucide-react";
+import { StatsCard } from "@/components/StatsCard";
 import { useI18n } from "@/intl";
-import { AuthGuard } from "@/components/AuthGuard";
 import { useAuth } from "@/context/AuthContext";
+import { motion } from "framer-motion";
 
 export default function AdminDashboard() {
   const t = useI18n("dashboards");
-  const { user, logout } = useAuth();
-  const router = useRouter();
+  const { getValidAccessToken } = useAuth();
+  const [stats, setStats] = useState({
+    merchants: 0,
+    couriers: 0,
+    shipments: 0,
+    activeShipments: 0,
+  });
 
-  const handleLogout = async () => {
-    await logout();
-    router.replace("/login/admin");
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const token = await getValidAccessToken();
+        if (!token) return;
+
+        // Fetch merchants count
+        const merchantsRes = await fetch("/api/admin/merchants?page=1&page_size=1", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const merchantsData = await merchantsRes.json();
+
+        // Fetch couriers count
+        const couriersRes = await fetch("/api/admin/couriers?page=1&page_size=1", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const couriersData = await couriersRes.json();
+
+        // Fetch shipments count
+        const shipmentsRes = await fetch("/api/shipments?page=1&page_size=1", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const shipmentsData = await shipmentsRes.json();
+
+        setStats({
+          merchants: merchantsData.total || 0,
+          couriers: couriersData.total || 0,
+          shipments: shipmentsData.total || 0,
+          activeShipments: 0, // Placeholder
+        });
+      } catch (err) {
+        console.error("Dashboard: Failed to load stats", err);
+      }
+    };
+    fetchStats();
+  }, [getValidAccessToken]);
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    show: { y: 0, opacity: 1 }
   };
 
   return (
-    <AuthGuard allowedRoles={["admin"]} loginPath="/login/admin">
-      <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-6 relative overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-accent/15 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-success/10 rounded-full blur-[100px]" />
-        </div>
+    <div className="space-y-10">
+      <header>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          {t("admin.title")}
+        </h1>
+        <p className="text-muted-foreground mt-2">
+          {t("admin.welcome")}
+        </p>
+      </header>
 
-        {/* Top controls */}
-        <div className="absolute top-5 right-5 flex items-center gap-0.5">
-          <LanguageSwitcher />
-          <ThemeToggle />
-        </div>
+      <motion.div 
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+      >
+        <motion.div variants={item}>
+          <StatsCard
+            title={t("admin.totalMerchants")}
+            value={stats.merchants.toString()}
+            icon={Users}
+          />
+        </motion.div>
+        <motion.div variants={item}>
+          <StatsCard
+            title={t("admin.totalCouriers")}
+            value={stats.couriers.toString()}
+            icon={Truck}
+          />
+        </motion.div>
+        <motion.div variants={item}>
+          <StatsCard
+            title={t("admin.totalShipments")}
+            value={stats.shipments.toString()}
+            icon={List}
+          />
+        </motion.div>
+        <motion.div variants={item}>
+          <StatsCard
+            title={t("admin.activeShipments")}
+            value={stats.activeShipments.toString()}
+            icon={PackageCheck}
+          />
+        </motion.div>
+      </motion.div>
 
-        <div className="relative z-10 w-full max-w-md bg-card/60 backdrop-blur-xl border border-border/50 rounded-3xl p-8 text-center shadow-2xl">
-          <div className="w-20 h-20 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-6 shadow-inner">
-            <Shield className="h-10 w-10 text-accent" />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="bg-card rounded-3xl border border-border/50 p-8 min-h-[400px] shadow-sm flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+             <Users className="h-8 w-8 text-muted-foreground" />
           </div>
-
-          <h1 className="text-3xl font-bold mb-2 tracking-tight text-foreground">
-            {t("admin.title")}
-          </h1>
-          <p className="text-muted-foreground mb-2 text-sm leading-relaxed">
-            {t("admin.welcome")}
+          <h3 className="text-xl font-bold mb-2">{t("admin.platformGrowth")}</h3>
+          <p className="text-muted-foreground max-w-sm">
+             {t("admin.platformGrowthSubtitle")}
           </p>
-          {user && (
-            <p className="text-xs text-muted-foreground/70 mb-10">
-              Signed in as {user.name} ({user.email})
-            </p>
-          )}
+        </div>
 
-          <div className="space-y-4">
-            <Button
-              variant="outline"
-              className="w-full rounded-2xl h-12 border-border/60 hover:border-destructive/40 group"
-              onClick={handleLogout}
-            >
-              <LogOut className="h-4 w-4 mr-2 text-muted-foreground group-hover:text-destructive transition-colors" />
-              {t("logout")}
-            </Button>
+        <div className="bg-card rounded-3xl border border-border/50 p-8 min-h-[400px] shadow-sm flex flex-col items-center justify-center text-center">
+           <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+             <List className="h-8 w-8 text-muted-foreground" />
           </div>
+          <h3 className="text-xl font-bold mb-2">{t("admin.shipmentVolume")}</h3>
+          <p className="text-muted-foreground max-w-sm">
+             {t("admin.shipmentVolumeSubtitle")}
+          </p>
         </div>
       </div>
-    </AuthGuard>
+    </div>
   );
 }
