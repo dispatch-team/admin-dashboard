@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const PROTECTED_ROUTES: Record<string, string> = {
-  "/merchant": "/login/merchant",
-  "/supervisor": "/login/supervisor",
-  "/admin": "/login/admin",
+  "/merchant": "/",
+  "/supervisor": "/",
+  "/admin": "/",
 };
 
 export function middleware(request: NextRequest) {
