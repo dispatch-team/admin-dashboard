@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const API_BASE = "https://service.staging.dispattch.dev/api/v1/couriers";
+const API_BASE = `${process.env.NEXT_PUBLIC_API_URL}/couriers`;
 
 export async function POST(
   request: NextRequest,

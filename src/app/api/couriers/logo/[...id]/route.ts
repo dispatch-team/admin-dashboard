@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const LOGO_BASE_URL = "https://service.staging.dispattch.dev/api/v1/couriers/logos/";
+const LOGO_BASE_URL = `${process.env.NEXT_PUBLIC_API_URL}/couriers/logos/`;
 
 export async function GET(
   request: NextRequest,

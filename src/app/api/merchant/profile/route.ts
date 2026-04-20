@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { normalizeMerchantProfile } from "@/lib/merchantProfile";
 
-const PROFILE_URL = "https://service.staging.dispattch.dev/api/v1/merchants/profile";
+const PROFILE_URL = `${process.env.NEXT_PUBLIC_API_URL}/merchants/profile`;
 /** Profile reads use /profile; updates are on the merchants collection (PATCH /profile returns 404 upstream). */
-const UPDATE_URL = "https://service.staging.dispattch.dev/api/v1/merchants/";
+const UPDATE_URL = `${process.env.NEXT_PUBLIC_API_URL}/merchants/`;
 
 
 export async function GET(request: NextRequest) {

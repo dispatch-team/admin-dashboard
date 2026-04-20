@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const AVAILABLE_COURIERS_URL = "https://service.staging.dispattch.dev/api/v1/couriers/available";
+const AVAILABLE_COURIERS_URL = `${process.env.NEXT_PUBLIC_API_URL}/couriers/available`;
 
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization");

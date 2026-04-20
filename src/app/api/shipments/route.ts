@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const SHIPMENTS_URL =
-  "https://service.staging.dispattch.dev/api/v1/shipments";
+const SHIPMENTS_URL = `${process.env.NEXT_PUBLIC_API_URL}/shipments`;
 
 export async function POST(request: NextRequest) {
   const authHeader = request.headers.get("authorization");

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { username, password } = body;
+  const { username, password, role } = body;
 
   if (!username || !password) {
     return NextResponse.json(
@@ -14,8 +14,13 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const loginUrl =
-    "https://service.staging.dispattch.dev/api/v1/merchants/login";
+  // Determine backend login URL based on role
+  let loginUrl = `${process.env.NEXT_PUBLIC_API_URL}/merchants/login`;
+  if (role === "admin") {
+    loginUrl = `${process.env.NEXT_PUBLIC_API_URL}/admins/login`;
+  } else if (role === "supervisor") {
+    loginUrl = `${process.env.NEXT_PUBLIC_API_URL}/couriers/login`;
+  }
 
   try {
     const res = await fetch(loginUrl, {
