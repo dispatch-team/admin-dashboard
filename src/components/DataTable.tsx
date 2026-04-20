@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/intl";
 
 interface Column<T> {
   key: string;
@@ -29,8 +30,11 @@ export function DataTable<T extends Record<string, unknown>>({
   data,
   keyExtractor,
   onRowClick,
-  emptyMessage = "No data available",
+  emptyMessage,
 }: DataTableProps<T>) {
+  const t = useI18n("common");
+  const finalEmptyMessage = emptyMessage || t("noData");
+
   return (
     <div className="rounded-lg border border-border bg-card overflow-hidden">
       <Table>
@@ -47,7 +51,7 @@ export function DataTable<T extends Record<string, unknown>>({
           {data.length === 0 ? (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-16 text-center text-muted-foreground text-sm">
-                {emptyMessage}
+                {finalEmptyMessage}
               </TableCell>
             </TableRow>
           ) : (
