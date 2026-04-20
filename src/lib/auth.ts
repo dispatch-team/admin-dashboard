@@ -61,14 +61,18 @@ export function isTokenExpired(accessToken: string): boolean {
   }
 }
 
-// 🔐 Keycloak Login (unchanged)
-export async function login(username: string, password: string): Promise<TokenResponse> {
+// 🔐 Keycloak Login (updated to support roles)
+export async function login(
+  username: string,
+  password: string,
+  role: UserRole = "merchant"
+): Promise<TokenResponse> {
   let res: Response;
   try {
     res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password, role }),
     });
   } catch {
     throw { code: "NETWORK_ERROR", message: "Unable to reach the authentication server." } as AuthError;
