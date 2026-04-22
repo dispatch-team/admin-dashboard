@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Dispatch - Unified Logistics Platform",
   description:
     "Dispatch connects merchants and courier providers in Addis Ababa with a unified logistics platform.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -26,9 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeConfigProvider>
           <IntlProvider>
-            <AuthProvider>
-              {children}
-            </AuthProvider>
+            <AuthProvider>{children}</AuthProvider>
           </IntlProvider>
         </ThemeConfigProvider>
         <Toaster />
