@@ -63,6 +63,7 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
 
   return (
     <span
+      data-testid="status-badge"
       className={cn(
         "inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border",
         config.className,

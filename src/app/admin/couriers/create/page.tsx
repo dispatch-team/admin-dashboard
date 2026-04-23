@@ -161,8 +161,9 @@ export default function CreateCourierPage() {
               </CardHeader>
               <CardContent className="p-8 pt-4 space-y-6">
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("companyName")}</Label>
+                  <Label htmlFor="company_name" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("companyName")}</Label>
                   <Input 
+                    id="company_name"
                     {...register("company_name")}
                     placeholder="e.g. FastTrack Logistics"
                     className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.company_name ? "border-destructive/60" : ""}`}
@@ -171,8 +172,9 @@ export default function CreateCourierPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("companyAddress")}</Label>
+                  <Label htmlFor="company_address" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("companyAddress")}</Label>
                   <Input 
+                    id="company_address"
                     {...register("company_address")}
                     placeholder="e.g. Bole Road, Addis Ababa"
                     className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.company_address ? "border-destructive/60" : ""}`}
@@ -181,8 +183,9 @@ export default function CreateCourierPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("phoneNumber")}</Label>
+                  <Label htmlFor="phone_number" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("phoneNumber")}</Label>
                   <Input 
+                    id="phone_number"
                     {...register("phone_number")}
                     placeholder="+251..."
                     className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.phone_number ? "border-destructive/60" : ""}`}
@@ -191,8 +194,9 @@ export default function CreateCourierPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("email")}</Label>
+                  <Label htmlFor="email" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("email")}</Label>
                   <Input 
+                    id="email"
                     {...register("email")}
                     type="email"
                     placeholder="info@company.com"
@@ -202,8 +206,9 @@ export default function CreateCourierPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("websiteUrl")}</Label>
+                  <Label htmlFor="website_url" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("websiteUrl")}</Label>
                   <Input 
+                    id="website_url"
                     {...register("website_url")}
                     placeholder="https://..."
                     className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.website_url ? "border-destructive/60" : ""}`}
@@ -223,8 +228,9 @@ export default function CreateCourierPage() {
                 <CardContent className="p-8 pt-4 space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerFirstName")}</Label>
+                      <Label htmlFor="owner_first_name" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerFirstName")}</Label>
                       <Input 
+                        id="owner_first_name"
                         {...register("owner_first_name")}
                         placeholder={t("firstNamePlaceholder")}
                         className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.owner_first_name ? "border-destructive/60" : ""}`}
@@ -232,8 +238,9 @@ export default function CreateCourierPage() {
                       {errors.owner_first_name && <p className="text-[10px] text-destructive font-bold ml-1">{errors.owner_first_name.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerLastName")}</Label>
+                      <Label htmlFor="owner_last_name" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerLastName")}</Label>
                       <Input 
+                        id="owner_last_name"
                         {...register("owner_last_name")}
                         placeholder={t("lastNamePlaceholder")}
                         className={`h-12 rounded-2xl border-border/60 bg-muted/20 font-semibold focus-visible:ring-primary/20 ${errors.owner_last_name ? "border-destructive/60" : ""}`}
@@ -244,8 +251,9 @@ export default function CreateCourierPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerPassword")}</Label>
+                      <Label htmlFor="owner_password" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("ownerPassword")}</Label>
                       <Input 
+                        id="owner_password"
                         {...register("owner_password")}
                         type="password"
                         placeholder="••••••••"
@@ -254,8 +262,9 @@ export default function CreateCourierPage() {
                       {errors.owner_password && <p className="text-[10px] text-destructive font-bold ml-1">{errors.owner_password.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("confirmPassword")}</Label>
+                      <Label htmlFor="confirm_password" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("confirmPassword")}</Label>
                       <Input 
+                        id="confirm_password"
                         {...register("confirm_password")}
                         type="password"
                         placeholder="••••••••"
@@ -276,8 +285,9 @@ export default function CreateCourierPage() {
                 <CardContent className="p-8 pt-4 space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("maximumWeight")}</Label>
+                      <Label htmlFor="max_weight" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("maximumWeight")}</Label>
                       <Input 
+                        id="max_weight"
                         {...register("max_weight")}
                         type="number"
                         step="0.1"
@@ -286,8 +296,9 @@ export default function CreateCourierPage() {
                       {errors.max_weight && <p className="text-[10px] text-destructive font-bold ml-1">{errors.max_weight.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("pricingBasePrice")}</Label>
+                      <Label htmlFor="base_price" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("pricingBasePrice")}</Label>
                       <Input 
+                        id="base_price"
                         {...register("base_price")}
                         type="number"
                         step="0.1"
@@ -301,8 +312,9 @@ export default function CreateCourierPage() {
 
                   <div className="grid grid-cols-1 gap-4">
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("weightRate")}</Label>
+                      <Label htmlFor="weight_rate" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("weightRate")}</Label>
                       <Input 
+                        id="weight_rate"
                         {...register("weight_rate")}
                         type="number"
                         step="0.01"
@@ -311,8 +323,9 @@ export default function CreateCourierPage() {
                       {errors.weight_rate && <p className="text-[10px] text-destructive font-bold ml-1">{errors.weight_rate.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("distanceRate")}</Label>
+                      <Label htmlFor="distance_rate" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("distanceRate")}</Label>
                       <Input 
+                        id="distance_rate"
                         {...register("distance_rate")}
                         type="number"
                         step="0.01"
@@ -321,8 +334,9 @@ export default function CreateCourierPage() {
                       {errors.distance_rate && <p className="text-[10px] text-destructive font-bold ml-1">{errors.distance_rate.message}</p>}
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("timeRate")}</Label>
+                      <Label htmlFor="time_rate" className="text-[10px] uppercase tracking-widest font-black opacity-60 ml-1">{t("timeRate")}</Label>
                       <Input 
+                        id="time_rate"
                         {...register("time_rate")}
                         type="number"
                         step="0.01"
