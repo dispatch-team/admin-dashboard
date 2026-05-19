@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { DataTable } from "@/components/DataTable";
 import { useAuth } from "@/context/AuthContext";
 import { getShipments, ShipmentListResponse, ShipmentResponse } from "@/lib/shipments";
+import { ShipmentTimeline } from "@/components/ShipmentTimeline";
 import { useI18n } from "@/intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
@@ -402,7 +403,7 @@ export default function AdminShipmentsPage() {
       </div>
 
       <Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
-        <DialogContent className="max-w-xl rounded-[2.5rem] border-border/40 bg-card/90 backdrop-blur-3xl shadow-3xl p-0 overflow-hidden">
+        <DialogContent className="max-w-3xl rounded-[2.5rem] border-border/40 bg-card/90 backdrop-blur-3xl shadow-3xl p-0 overflow-hidden">
           <div className="p-8 pb-4 bg-gradient-to-b from-primary/5 to-transparent">
             <div className="flex items-center gap-6">
               <div className="space-y-1">
@@ -460,6 +461,11 @@ export default function AdminShipmentsPage() {
                    {selectedShipment?.description || t("admin.noDescription")}
                  </p>
                </div>
+            </div>
+
+            <div className="space-y-3">
+               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-black opacity-60">{t("admin.timeline.title")}</p>
+               <ShipmentTimeline shipmentId={selectedShipment?.id} isOpen={isDetailsOpen} />
             </div>
 
             <div className="grid grid-cols-2 gap-8 pt-2">
